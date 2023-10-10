@@ -1,7 +1,7 @@
 /**
- * @file ExerciciosAula10-6.c
+ * @file ExerciciosAula10-7.c
  * @author Leonardo Tanamura
- * @brief Exercicio 6 Aula 10
+ * @brief Exercicio 7 Aula 10
  * @date 2023-10-03
  */
 
