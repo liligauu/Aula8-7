@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio_ext.h>
 
 /*
 4) Faça um programa que receba um nome, ele deve perguntar
@@ -23,7 +22,8 @@ int main (){
     char nome [21];
 
     printf("Digite o seu nome: ");
-    scanf("%20[^\n]", &nome);
+    fgets(nome, 20, stdin);
+    nome[strcspn(nome, "\n")] = '\0';
     setbuf(stdin,NULL);
 
     tamanho = strlen(nome);
@@ -31,9 +31,10 @@ int main (){
     while(tamanho < 5){
         printf("Seu nome deve conter no mínimo 5 caracteres!\n");
             printf("Digite seu nome novamente: ");
-                scanf("%20[^\n]", &nome);
-                    tamanho = strlen(nome);
-                        setbuf(stdin,NULL);
+                    fgets(nome, 20, stdin);
+                        nome[strcspn(nome, "\n")] = '\0';
+                            setbuf(stdin,NULL);
+            tamanho = strlen(nome);
     if(tamanho > 5){
         continue;
     }

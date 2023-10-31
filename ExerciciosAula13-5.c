@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio_ext.h>
 
 /*
 5) Faça um programa que receba uma frase e depois exiba quantas vezes
@@ -22,24 +21,26 @@ int main (){
     int tamanho, a = 0, e = 0, i = 0, o = 0,u = 0;
 
     printf("Digite uma frase: ");
-    scanf("%100[^\n]", &frase);
+    fgets(frase, 100, stdin);
+    frase[strcspn(frase, "\n")] = '\0';
+    setbuf(stdin,NULL);
 
     tamanho = strlen(frase);
 
-    for(int i = 0; i < tamanho; i++){
-        if(frase[i] == 'a' || frase[i] == 'A'){
+    for(int j = 0; j < tamanho; j++){
+        if(frase[j] == 'a' || frase[j] == 'A'){
             a++;
         }
-            if(frase[i] == 'e' || frase[i] == 'E'){
+            if(frase[j] == 'e' || frase[j] == 'E'){
                 e++;
             }
-                if(frase[i] == 'i' || frase[i] == 'I'){
+                if(frase[j] == 'i' || frase[j] == 'I'){
                     i++;
                 }
-                    if(frase[i] == 'o' || frase[i] == 'O'){
+                    if(frase[j] == 'o' || frase[j] == 'O'){
                         o++;
                     }
-                        if(frase[i] == 'u' || frase[i] == 'u'){
+                        if(frase[j] == 'u' || frase[j] == 'U'){
                             u++;
                         }
     }

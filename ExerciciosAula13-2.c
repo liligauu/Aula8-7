@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio_ext.h>
 
 /*
 2) Faça um programa que armazene o nome e salário de 5

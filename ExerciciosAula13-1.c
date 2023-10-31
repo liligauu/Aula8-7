@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio_ext.h>
 
 /*
 1) Crie um programa para armazenar 10 nomes em um vetor
