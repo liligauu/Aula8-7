@@ -37,7 +37,7 @@ int main(){
             scanf("%i", &meuVetor[i]);
     }
     
-    printf("%i\n", maioridade(meuVetor));
+    printf("A maior idade é: %i\n", maioridade(meuVetor));
 
     return 0;
 
