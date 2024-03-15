@@ -54,10 +54,10 @@ int main(){
     printf("Nome: %s\n", meu_aluno.aluno);
     printf("Curso: %s\n", meu_aluno.curso);
 
-    if(media > 7){
+    if(media >= 7){
         printf("Media: %.2f | Aluno Aprovado", media);
     }
-    if(media < 7 && media > 3){
+    if(media < 7 && media >= 3){
         printf("Media: %.2f | Exame te aguarda!", media);
     }
     if(media < 3){
