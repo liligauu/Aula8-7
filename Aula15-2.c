@@ -12,6 +12,8 @@ caso estrangeiro, armazene o passaporte.
  Regra: Utilize structs, typedef, union e enum.
 */
 
+typedef enum{Brasileiro = 1, Estrangeiro = 2} Option;
+
 typedef struct{
     char Nome[41];
     int Idade;
@@ -25,8 +27,7 @@ typedef union{
 
 int main(){
 
-    int option;
-
+    Option option;    
     Cadastro cadastro[5];
     Documentos nacionalidade[5];
 
