@@ -12,12 +12,11 @@ o 1º termo é 0 e o 2º termo é 1.
 
 int Fibonacci(int n){
     if(n == 0){
-        return 1;
+        return 0;
     }else if(n == 1){
-        return n;
+        return 1;
     }else{
-        int valor = Fibonacci(n - 1) + Fibonacci(n - 2);
-        return valor;
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
 }
 
