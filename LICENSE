@@ -1,24 +1,49 @@
-This is free and unencumbered software released into the public domain.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+void leString(char string[], int tamanho){
+    fgets(string, tamanho, stdin);
+    string[strcspn(string, "\n")] = '\0';
+    setbuf(stdin, NULL);
+}
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+void Contida(char *str1, char *str2){
+    while (*str1 != '\0') {
+        char *p1 = str1;
+        char *p2 = str2;
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+        while (*p1 == *p2 && *p2 != '\0') {
+            p1++;
+            p2++;
+        }
 
-For more information, please refer to <https://unlicense.org>
+        if (*p2 == '\0') {
+            printf("A string '%s' está contida em '%s'.\n", str2, str1);
+            return;  // Encerra a função se str2 foi encontrada em str1
+        }
+
+        str1++;
+    }
+
+    printf("A string '%s' não está contida em '%s'.\n", str2, str1);
+}
+
+int main(){
+    
+    char s1[20];
+    char s2[20];
+
+    char *ptr_s1 = s1;
+    char *ptr_s2 = s2;
+
+    printf("Digite a primeira string: ");
+    leString(ptr_s1, 20);
+
+    printf("Digite a segunda string: ");
+    leString(ptr_s2, 20);
+
+    Contida(ptr_s1, ptr_s2);
+
+    return 0;
+}
