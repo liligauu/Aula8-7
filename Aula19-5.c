@@ -14,15 +14,33 @@ void leString(char string[], int tamanho){
     setbuf(stdin, NULL);
 }
 
-void Strings(char Letras[]){
+void Contida(char *str1, char *str2){
+    void *ptr1, *ptr2;
+    ptr1 = &str1;
+    ptr2 = &str2;
 
+    if(ptr1 == ptr2){
+        printf("Os ponteiros são iguais!\n");
+    }else{
+        printf("Os ponteiros são diferentes\n");
+    }
 }
 
 int main(){
     
-    char *Texto[2][50];
+    char s1[20];
+    char s2[20];
 
-    printf("Digite o texto: ");
-    leString(Texto, 50);
-    
+    char *ptr_s1 = s1;
+    char *ptr_s2 = s2;
+
+    printf("Digite a primeira string: ");
+    leString(ptr_s1, 20);
+
+    printf("Digite a segunda string: ");
+    leString(ptr_s2, 20);
+
+    Contida(ptr_s1, ptr_s2);
+
+    return 0;
 }
