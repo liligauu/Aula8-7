@@ -15,13 +15,15 @@ void leString(char string[], int tamanho){
 }
 
 void Contida(char *str1, char *str2){
-
     char *ptr1 = str1;
     char *ptr2 = str2;
-    int encontrou = 0; 
 
-    while(*str1 != '\0'){
-        if(*str1 == *str2){
+    int encontrou = 0;
+    //int tamanho1 = strlen(str1);
+    //int tamanho2 = strlen(str2); 
+
+    while(*ptr1 != '\0'){
+        if(*ptr1 == *ptr2){
             char *temp_ptr1 = ptr1;
             char *temp_ptr2 = ptr2;
 
@@ -35,13 +37,13 @@ void Contida(char *str1, char *str2){
                 break;
             }
         }
-        str1++;
+        ptr1++;
     }
 
     if(encontrou){
-        printf("A string %s está contida em %s.\n", str2, ptr1);
+        printf("A string está contida na primeira.\n");
     }else{
-        printf("A string %s não está contida em %s.\n", str2, ptr1);
+        printf("A segunda string não está contida na primeira.\n");
     }
 
     return;
