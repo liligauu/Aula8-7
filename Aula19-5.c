@@ -15,33 +15,40 @@ void leString(char string[], int tamanho){
 }
 
 void Contida(char *str1, char *str2){
-    void *ptr1, *ptr2;
-    ptr1 = &str1;
-    ptr2 = &str2;
+    char *ptr1 = str1;
+    char *ptr2 = str2;
 
-    /*
-    Universidade Tecnologica Federal Do Parana  
-    dade
-    */
+    int tamanho1 = strlen(str1);
+    int tamanho2 = strlen(str2);
+    int match = 0; // Flag to check if the second string is found within the first
 
-    int tamanho1, tamanho2;
-    int i = 0, j = 0;
+    while(*ptr1 != '\0'){
+        if(*ptr1 == *ptr2){
+            char *temp_ptr1 = ptr1;
+            char *temp_ptr2 = ptr2;
 
-    tamanho1 = strlen(str1);
-    tamanho2 = strlen(str2);
+            // Compare the characters
+            while(*temp_ptr1 == *temp_ptr2 && *temp_ptr2 != '\0'){
+                temp_ptr1++;
+                temp_ptr2++;
+            }
 
-    while(i < tamanho1 && j < tamanho2){
-        if(*(str2 + j) == *(str1 + i)){
-            printf("%c, %c\n", *(str1 + i), *(str2 + j));
-            i++;
-            j++;
-        }else{
-            i++;
-        }    
+            // If second string is found within first
+            if(*temp_ptr2 == '\0'){
+                match = 1;
+                break;
+            }
+        }
+        ptr1++;
+    }
+
+    if(match){
+        printf("A segunda string está contida na primeira.\n");
+    }else{
+        printf("A segunda string NÃO está contida na primeira.\n");
     }
 
     return;
-
 }
 
 int main(){
