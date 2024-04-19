@@ -19,11 +19,29 @@ void Contida(char *str1, char *str2){
     ptr1 = &str1;
     ptr2 = &str2;
 
-    if(ptr1 == ptr2){
-        printf("Os ponteiros são iguais!\n");
-    }else{
-        printf("Os ponteiros são diferentes\n");
+    /*
+    Universidade Tecnologica Federal Do Parana  
+    dade
+    */
+
+    int tamanho1, tamanho2;
+    int i = 0, j = 0;
+
+    tamanho1 = strlen(str1);
+    tamanho2 = strlen(str2);
+
+    while(i < tamanho1 && j < tamanho2){
+        if(*(str2 + j) == *(str1 + i)){
+            printf("%c, %c\n", *(str1 + i), *(str2 + j));
+            i++;
+            j++;
+        }else{
+            i++;
+        }    
     }
+
+    return;
+
 }
 
 int main(){
