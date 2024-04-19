@@ -22,12 +22,15 @@ void Contida(char *str1, char *str2){
 
     while(*str1 != '\0'){
         if(*str1 == *str2){
-            while(*ptr1 == *ptr1 && *ptr1 != '\0'){
-                ptr1++;
-                ptr1++;
+            char *temp_ptr1 = ptr1;
+            char *temp_ptr2 = ptr2;
+
+            while(*temp_ptr1 == *temp_ptr2 && *temp_ptr2 != '\0'){
+                temp_ptr1++;
+                temp_ptr2++;
             }
 
-            if(*ptr1 == '\0'){
+            if(*temp_ptr2 == '\0'){
                 encontrou = 1;
                 break;
             }
@@ -36,9 +39,9 @@ void Contida(char *str1, char *str2){
     }
 
     if(encontrou){
-        printf("A string %s está contida em %s.\n", str2, str1);
+        printf("A string %s está contida em %s.\n", str2, ptr1);
     }else{
-        printf("A string %s não está contida em %s.\n", str2, str1);
+        printf("A string %s não está contida em %s.\n", str2, ptr1);
     }
 
     return;
