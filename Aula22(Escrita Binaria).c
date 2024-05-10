@@ -41,6 +41,21 @@ int main(){
     printf("%s", texto);
 
     fclose(arquivo);
- 
+
+    fseek(arquivo, 10/*LINHAS*/, SEEK_SET/*COMEÇO*/);
+    fseek(arquivo, 10, SEEK_CUR/*LINHA ATUAL*/);
+    fseek(arquivo, 10, SEEK_END/*FINAL*/);
+
+    //int remove(char* nome do arquivo);
+    if(remove != 0){
+        perror("O arquivo não foi excluido");
+        exit(1);
+    }
+
+    long ftell(FILE* arq); //POSIÇÃO DE LEITURA/ESCRITA DO ARQUIVO
+    // 0 SE COMEÇO DO ARQUIVO
+    //TAMANHO DO ARQUIVO EM BYTES SE ESTIVER NO FINAL
+
+
     return 0;
 }
