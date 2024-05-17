@@ -21,13 +21,13 @@ void CriaArquivo(char nome[]){
     char texto[100];
     FILE* arq1;
 
-    arq1 = fopen(nome, "r");
+    arq1 = fopen(nome, "r+w");
     if(arq1 != NULL){
         perror("Arquivo já existe!\n");
-        printf("1- Sobrescrever arquivo!\n 2- Alterar nome\n");
+        printf("1- Sobrescrever arquivo!\n2- Alterar nome\n");
         scanf("%i", &alternativa);
         if(alternativa == 1){
-            FILE* arq1 = fopen(nome, "w");
+            arq1 = fopen(nome, "w");
             if(arq1 == NULL){
                 perror("Erro ao criar arquivo!\n");
                 exit(1);
@@ -36,7 +36,7 @@ void CriaArquivo(char nome[]){
         }else if(alternativa == 2){
             printf("Digite o novo nome: ");
             LeString(nome, 49);
-            FILE* arq1 = fopen(nome, "w");
+            arq1 = fopen(nome, "w");
             if(arq1 == NULL){
                 perror("Erro ao criar arquivo!\n");
                 exit(1);
@@ -60,7 +60,7 @@ void CriaArquivo(char nome[]){
     }while(alternativa != 2 && alternativa != 1);
 
     if(alternativa == 1){
-        arq1 = fopen(nome, "a");
+        arq1 = fopen(nome, "r+w");
         if(arq1 == NULL){
             perror("Erro ao abrir arquivo!\n");
             exit(1);
@@ -71,12 +71,11 @@ void CriaArquivo(char nome[]){
         fputs(texto, arq1);
     }else if(alternativa == 2){
         perror("Ok, seguindo!");
-        exit(1);
+        fputs("\0", arq1);
     }
 
     fclose(arq1);
 }
-
 
 int main(){
 
@@ -85,39 +84,47 @@ int main(){
     char caracter;
     int contapalavras = 0;
     int opcao = 0;
+    FILE* arq2;
 
-    printf("1- Criar arquivo\n2- Buscar arquivo\n");
-    scanf("%i", &opcao);
-    setbuf(stdin, NULL);
-    
-    if(opcao == 1){
-        printf("Digite o nome do arquivo: ");
-        LeString(texto, 49);
-        CriaArquivo(texto);
-    }
-    if(opcao == 2){
-        printf("Pesquisar arquivo: \n");
-        LeString(pesquisaarquivo, 49);
-        FILE* arq2 = fopen(pesquisaarquivo, "r");
-        if(arq2 == NULL){
-        perror("Erro ao ler arquivo!\n");
-        exit(1);
+    do{
+        printf("1- Criar arquivo\n2- Buscar arquivo\n3- Encerrar programa.\n");
+        scanf("%i", &opcao);
+        setbuf(stdin, NULL);
+        if(opcao == 1){
+            printf("Digite o nome do arquivo: ");
+            LeString(texto, 49);
+            CriaArquivo(texto);
         }
-    
-        printf("Digite uma palavra: ");
-        scanf("%c", &caracter);
-        int c;
-
-        while((c = fgetc(arq2)) != EOF){
-            if(c == caracter){
-                contapalavras++;
+        if(opcao == 2){
+            printf("Pesquisar arquivo: ");
+            LeString(pesquisaarquivo, 49);
+            arq2 = fopen(pesquisaarquivo, "r");
+            if(arq2 == NULL){
+            perror("Erro ao ler arquivo!\n");
+            exit(1);
             }
+        
+            printf("Digite uma palavra: ");
+            scanf("%c", &caracter);
+            int c;
+
+            contapalavras = 0;
+            while((c = fgetc(arq2)) != EOF){
+                if(toupper(c) == toupper(caracter)){
+                    contapalavras++;
+                }
+            }
+
+            printf("A letra %c, aparece %i vezes em %s\n", caracter, contapalavras, pesquisaarquivo);
+
+            fclose(arq2);
         }
-
-        printf("A letra %c, aparece %i vezes em %s", caracter, contapalavras, pesquisaarquivo);
-
-        fclose(arq2);
-    }
+        if(opcao == 3){
+            printf("Encerrando programa!\n");
+            exit(0);
+        }
+    } while(opcao != 3);
+    
 
     return 0;
 }
