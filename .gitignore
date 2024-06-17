@@ -5,290 +5,240 @@
 #include "utils.h"
 #include "myatletas.h"
 
-char* ModalidadeMasculina(int opcao){
-    switch(opcao){
-    case 1:
-        return "10000M Men";
-    case 2: 
-        return "100M Men";
-    case 3: 
-        return "110M Hurdles Men";
-    case 4: 
-        return "1500M Men";
-    case 5: 
-        return "200M Men";
-    case 6: 
-        return "20Km Race Walk Men";
-    case 7: 
-        return "3000M Steeplechase Men";
-    case 8: 
-        return "400M Hurdles Men";
-    case 9: 
-        return "400M Men";
-    case 10: 
-        return "4X100M Relay Men";
-    case 11: 
-        return "4X400 Relay Men";
-    case 12: 
-        return "5000M Men";
-    case 13: 
-        return "50Km Race Walk Men";
-    case 14: 
-        return "800M Men";
-    case 15: 
-        return "Decathlon Men";
-    case 16: 
-        return "Discus Throw Men";
-    case 17: 
-        return "Hammer Throw Men";
-    case 18: 
-        return "High Jump Men";
-    case 19: 
-        return "Javelin Throw Men";
-    case 20: 
-        return "Long Jump Men";
-    case 21: 
-        return "Marathon Men";
-    case 22: 
-        return "Pole Vault Men";
-    case 23: 
-        return "Shot Put Men";
-    case 24: 
-        return "Triple Jump Men";
-    default:
-        return NULL;
+const char* ModalidadeMasculina(int opcao) {
+    switch (opcao) {
+        case 1: return "10000M Men";
+        case 2: return "100M Men";
+        case 3: return "110M Hurdles Men";
+        case 4: return "1500M Men";
+        case 5: return "200M Men";
+        case 6: return "20Km Race Walk Men";
+        case 7: return "3000M Steeplechase Men";
+        case 8: return "400M Hurdles Men";
+        case 9: return "400M Men";
+        case 10: return "4X100M Relay Men";
+        case 11: return "4X400 Relay Men";
+        case 12: return "5000M Men";
+        case 13: return "50Km Race Walk Men";
+        case 14: return "800M Men";
+        case 15: return "Decathlon Men";
+        case 16: return "Discus Throw Men";
+        case 17: return "Hammer Throw Men";
+        case 18: return "High Jump Men";
+        case 19: return "Javelin Throw Men";
+        case 20: return "Long Jump Men";
+        case 21: return "Marathon Men";
+        case 22: return "Pole Vault Men";
+        case 23: return "Shot Put Men";
+        case 24: return "Triple Jump Men";
+        default: return NULL;
     }
 }
 
-const char* ModalidadeFeminina(int opcao){
-    switch(opcao){
-    case 1:
-        return "10000M Women";
-    case 2: 
-        return "100M Women";
-    case 3: 
-        return "1500M Women";
-    case 4: 
-        return "200M Women";
-    case 5: 
-        return "20Km Race Walk Women";
-    case 6: 
-        return "3000M Steeplechase Women";
-    case 7: 
-        return "400M Hurdles Women";
-    case 8: 
-        return "400M Women";
-    case 9: 
-        return "4X100M Relay Women";
-    case 10: 
-        return "4X400 Relay Women";
-    case 11: 
-        return "5000M Women";
-    case 12: 
-        return "800M Women";
-    case 13: 
-        return "Discus Throw Women";
-    case 14: 
-        return "Hammer Throw Women";
-    case 15: 
-        return "High Jump Women";
-    case 16: 
-        return "Javelin Throw Women";
-    case 17: 
-        return "Long Jump Women";
-    case 18: 
-        return "Marathon Women";
-    case 19: 
-        return "Pole Vault Women";
-    case 20: 
-        return "Shot Put Women";
-    case 21: 
-        return "Triple Jump Women";
-    case 22: 
-        return "100M Hurdles Women";
-    case 23: 
-        return "Heptathlon Women";
-    default: 
-        return NULL; 
+const char* ModalidadeFeminina(int opcao) {
+    switch (opcao) {
+        case 1: return "10000M Women";
+        case 2: return "100M Women";
+        case 3: return "1500M Women";
+        case 4: return "200M Women";
+        case 5: return "20Km Race Walk Women";
+        case 6: return "3000M Steeplechase Women";
+        case 7: return "400M Hurdles Women";
+        case 8: return "400M Women";
+        case 9: return "4X100M Relay Women";
+        case 10: return "4X400 Relay Women";
+        case 11: return "5000M Women";
+        case 12: return "800M Women";
+        case 13: return "Discus Throw Women";
+        case 14: return "Hammer Throw Women";
+        case 15: return "High Jump Women";
+        case 16: return "Javelin Throw Women";
+        case 17: return "Long Jump Women";
+        case 18: return "Marathon Women";
+        case 19: return "Pole Vault Women";
+        case 20: return "Shot Put Women";
+        case 21: return "Triple Jump Women";
+        case 22: return "100M Hurdles Women";
+        case 23: return "Heptathlon Women";
+        default: return NULL;
     }
 }
 
-void InserirJogador(Medalha** jogador, int* tamanho){
+void InserirJogador(Medalha** jogador, int* tamanho) {
     int chooseoption;
 
     printf("Você deseja adicionar um novo jogador?\n");
-    do{
+    do {
         printf("1 - Sim!\n");
         printf("2 - Não\n");
         printf("Opcao: ");
         scanf("%i", &chooseoption);
         setbuf(stdin, NULL);
-        if(chooseoption > 2 || chooseoption < 1){
+        if (chooseoption > 2 || chooseoption < 1) {
             printf("Digite uma opção válida!\n");
         }
-    } while(chooseoption > 2 || chooseoption < 1);
+    } while (chooseoption > 2 || chooseoption < 1);
 
-    if(chooseoption == 1){
-        while(1){
+    if (chooseoption == 1) {
+        while (1) {
             (*tamanho)++;
-            *jogador = (Medalha*) realloc(*jogador, (*tamanho) * sizeof(Medalha));
-            if(*jogador == NULL){
+            *jogador = (Medalha*)realloc(*jogador, (*tamanho) * sizeof(Medalha));
+            if (*jogador == NULL) {
                 perror("Erro ao realocar vetor dos atletas!\n");
                 exit(1);
-            }else{
+            } else {
                 printf("Vetor dos atletas realocado para %i\n", *tamanho);
             }
             printf("Digite o nome do atleta %i (\"fim\") para terminar!\n", *tamanho);
             LeString((*jogador)[*tamanho - 1].nome_atleta, 29);
-            if(strcmp((*jogador)[*tamanho - 1].nome_atleta, "fim") == 0){
+            if (strcmp((*jogador)[*tamanho - 1].nome_atleta, "fim") == 0) {
                 (*tamanho)--;
-                *jogador = (Medalha*) realloc(*jogador, (*tamanho) * sizeof(Medalha));
-                if(*jogador == NULL){
+                *jogador = (Medalha*)realloc(*jogador, (*tamanho) * sizeof(Medalha));
+                if (*jogador == NULL) {
                     perror("Erro ao realocar vetor dos atletas!\n");
                     exit(1);
-                }else{
+                } else {
                     printf("Vetor de atletas realocado para %i!\n", *tamanho);
                     printf("Retornando...\n");
                     return;
                 }
-            }else{
-                do{
+            } else {
+                do {
                     printf("Digite o genero do \"%s\": ", (*jogador)[*tamanho - 1].nome_atleta);
                     scanf(" %c", &(*jogador)[*tamanho - 1].genero);
                     setbuf(stdin, NULL);
-                    if(tolower((*jogador)[*tamanho - 1].genero) != 'm' && tolower((*jogador)[*tamanho - 1].genero) != 'f'){
+                    if (tolower((*jogador)[*tamanho - 1].genero) != 'm' && tolower((*jogador)[*tamanho - 1].genero) != 'f') {
                         printf("Digite um gênero válido!\n");
                     }
-                } while(tolower((*jogador)[*tamanho - 1].genero) != 'm' && tolower((*jogador)[*tamanho - 1].genero) != 'f');
+                } while (tolower((*jogador)[*tamanho - 1].genero) != 'm' && tolower((*jogador)[*tamanho - 1].genero) != 'f');
                 (*jogador)[*tamanho - 1].genero = toupper((*jogador)[*tamanho - 1].genero);
 
                 printf("Escolha a modalidade do atleta!\n");
-                if((*jogador)[*tamanho - 1].genero == 'M'){
-                    printf("1 - 10000M Men \n2 - 100M Men\n3 - 110M Hurdles Men\n 4 - 1500M Men\n 5 - 200M Men\n 6 - 20Km Race Walk Men\n 7 - 3000M Steeplechase Men\n 8 - 400M Hurdles Men\n 9 - 400M Men\n 10 - 4X100M Relay Men\n 11 - 4X400 Relay Men\n 12 - 5000M Men\n 13 - 50Km Race Walk Men\n 14 - 800M Men\n 15 - Decathlon Men\n 16 - Discus Throw Men\n 17 - Hammer Throw Men\n 18 - High Jump Men\n 19 - Javelin Throw Men\n 20 - Long Jump Men\n 21 - Marathon Men\n 22 - Pole Vault Men\n 23 - Shot Put Men\n 24 - Triple Jump Men\n");
-                    do{
+                if ((*jogador)[*tamanho - 1].genero == 'M') {
+                    printf("1 - 10000M Men \n2 - 100M Men\n3 - 110M Hurdles Men\n4 - 1500M Men\n5 - 200M Men\n6 - 20Km Race Walk Men\n7 - 3000M Steeplechase Men\n8 - 400M Hurdles Men\n9 - 400M Men\n10 - 4X100M Relay Men\n11 - 4X400 Relay Men\n12 - 5000M Men\n13 - 50Km Race Walk Men\n14 - 800M Men\n15 - Decathlon Men\n16 - Discus Throw Men\n17 - Hammer Throw Men\n18 - High Jump Men\n19 - Javelin Throw Men\n20 - Long Jump Men\n21 - Marathon Men\n22 - Pole Vault Men\n23 - Shot Put Men\n24 - Triple Jump Men\n");
+                    do {
                         printf("Opcao: ");
                         scanf("%i", &chooseoption);
                         setbuf(stdin, NULL);
-                        if(chooseoption < 1 || chooseoption > 24){
+                        if (chooseoption < 1 || chooseoption > 24) {
                             printf("Opção inválida, escolha novamente!\n");
                         }
-                    } while(chooseoption < 1 || chooseoption > 24);
+                    } while (chooseoption < 1 || chooseoption > 24);
                     (*jogador)[*tamanho - 1].modalidade = ModalidadeMasculina(chooseoption);
-                }
-                if((*jogador)[*tamanho - 1].genero == 'F'){
-                    printf("1 - 10000M Women \n2 - 100M Women\n3 - 1500M Women\n 4 - 200M Women\n 5 - 20Km Race Walk Women\n 6 - 3000M Steeplechase Women\n 7 - 400M Hurdles Women\n 8 - 400M Women\n 9 - 4X100M Relay Women\n 10 - 4X400 Relay Women\n 11 - 5000M Women\n12 - 800M Women\n13 - Discus Throw Women\n14 - Hammer Throw Women\n15 - High Jump Women\n16 - Javelin Throw Women\n17 - Long Jump Women\n18 - Marathon Women\n19 - Pole Vault Women\n20 - Shot Put Women\n21 - Triple Jump Women\n22 - 100M Hurdles Women\n23 - Heptathlon Women\n");
-                    do{
+                } else if ((*jogador)[*tamanho - 1].genero == 'F') {
+                    printf("1 - 10000M Women \n2 - 100M Women\n3 - 1500M Women\n4 - 200M Women\n5 - 20Km Race Walk Women\n6 - 3000M Steeplechase Women\n7 - 400M Hurdles Women\n8 - 400M Women\n9 - 4X100M Relay Women\n10 - 4X400 Relay Women\n11 - 5000M Women\n12 - 800M Women\n13 - Discus Throw Women\n14 - Hammer Throw Women\n15 - High Jump Women\n16 - Javelin Throw Women\n17 - Long Jump Women\n18 - Marathon Women\n19 - Pole Vault Women\n20 - Shot Put Women\n21 - Triple Jump Women\n22 - 100M Hurdles Women\n23 - Heptathlon Women\n");
+                    do {
                         printf("Opcao: ");
                         scanf("%i", &chooseoption);
                         setbuf(stdin, NULL);
-                        if(chooseoption < 1 || chooseoption > 23){
+                        if (chooseoption < 1 || chooseoption > 23) {
                             printf("Opção inválida, escolha novamente!\n");
                         }
-                    } while(chooseoption < 1 || chooseoption > 23);
+                    } while (chooseoption < 1 || chooseoption > 23);
                     (*jogador)[*tamanho - 1].modalidade = ModalidadeFeminina(chooseoption);
                 }
 
-                printf("Digite a cidade do atleta \"%s\": ", (*jogador)[*tamanho - 1].nome_atleta);
+                printf("Digite a cidade do atleta!\n");
+                fflush(stdin);
                 LeString((*jogador)[*tamanho - 1].cidade, 29);
 
-                do{
+                do {
                     printf("Digite o ano da competição: ");
                     scanf("%i", &(*jogador)[*tamanho - 1].ano_da_conquista);
                     setbuf(stdin, NULL);
-                    if((*jogador)[*tamanho - 1].ano_da_conquista % 4 != 0){
-                        printf("Você não digitou uma edição válida!\n");
-                        printf("Digite novamente!\n");
+                    if ((*jogador)[*tamanho - 1].ano_da_conquista % 4 != 0) {
+                        printf("Você não digitou uma edição válida!\nDigite novamente!\n");
                     }
-                }while((*jogador)[*tamanho - 1].ano_da_conquista % 4 != 0);
+                } while ((*jogador)[*tamanho - 1].ano_da_conquista % 4 != 0);
 
-                do{
+                do {
                     printf("Digite a medalha do(a) \"%s\"!\n", (*jogador)[*tamanho - 1].nome_atleta);
                     scanf(" %c", &(*jogador)[*tamanho - 1].tipo_medalha);
                     setbuf(stdin, NULL);
                     (*jogador)[*tamanho - 1].tipo_medalha = toupper((*jogador)[*tamanho - 1].tipo_medalha);
-                    if((*jogador)[*tamanho - 1].tipo_medalha != 'G' && (*jogador)[*tamanho - 1].tipo_medalha != 'S' && (*jogador)[*tamanho - 1].tipo_medalha != 'B'){
-                        printf("Você não digitou uma medalha válida!\n");
-                        printf("Digite novamente!\n");
+                    if ((*jogador)[*tamanho - 1].tipo_medalha != 'G' && (*jogador)[*tamanho - 1].tipo_medalha != 'S' && (*jogador)[*tamanho - 1].tipo_medalha != 'B') {
+                        printf("Você não digitou uma medalha válida!\nDigite novamente!\n");
                     }
                 } while ((*jogador)[*tamanho - 1].tipo_medalha != 'G' && (*jogador)[*tamanho - 1].tipo_medalha != 'S' && (*jogador)[*tamanho - 1].tipo_medalha != 'B');
-                
+
                 printf("Digite o pais do atleta!\n");
                 fflush(stdin);
                 LeString((*jogador)[*tamanho - 1].pais_origem, 4);
 
                 printf("Digite o resultado do atleta!\n");
-                do{
+                do {
                     printf("1- Tempo?\n2- Pontos?\n3- Metros?\n");
                     scanf("%i", &chooseoption);
                     setbuf(stdin, NULL);
-                } while(chooseoption > 3 || chooseoption < 1);
-                if(chooseoption == 2){
-                    do{
+                } while (chooseoption > 3 || chooseoption < 1);
+
+                if (chooseoption == 2) {
+                    do {
                         printf("Qual foi o resultado em Pontos do jogador: ");
-                        scanf("%f", &(*jogador)[*tamanho - 1].resultado.pontos);
+                        scanf("%f", &(*jogador)[*tamanho - 1].resultado.distancia);
                         setbuf(stdin, NULL);
-                        if((*jogador)[*tamanho - 1].resultado.pontos < 0){
-                            printf("Digitou um valor incorreto!\n Digite novamente!\n");
+                        if ((*jogador)[*tamanho - 1].resultado.pontos < 0) {
+                            printf("Digitou um valor incorreto!\nDigite novamente!\n");
                         }
-                    } while((*jogador)[*tamanho - 1].resultado.pontos < 0);
+                    } while ((*jogador)[*tamanho - 1].resultado.distancia < 0);
                 }
-                if(chooseoption == 3){
-                    do{
+
+                if (chooseoption == 3) {
+                    do {
                         printf("Qual foi o resultado em Metros do jogador: ");
                         scanf("%f", &(*jogador)[*tamanho - 1].resultado.distancia);
                         setbuf(stdin, NULL);
-                        if((*jogador)[*tamanho - 1].resultado.distancia < 0){
-                            printf("Digitou um valor incorreto!\n Digite novamente!\n");
+                        if ((*jogador)[*tamanho - 1].resultado.distancia < 0) {
+                            printf("Digitou um valor incorreto!\nDigite novamente!\n");
                         }
-                    } while((*jogador)[*tamanho - 1].resultado.distancia < 0);
+                    } while ((*jogador)[*tamanho - 1].resultado.distancia < 0);
                 }
-                if(chooseoption == 1){
+
+                if (chooseoption == 1) {
                     int escolha;
                     printf("Selecione o formato!\n");
-                    do{
+                    do {
                         printf("1- HH:MM:SS\n2- MM:SS\n3- SS\n");
                         scanf("%i", &escolha);
                         setbuf(stdin, NULL);
-                        if(escolha < 1 || escolha > 3){
-                            printf("Você digitou um valor incorreto!\n Digite novamente!\n");                        
+                        if (escolha < 1 || escolha > 3) {
+                            printf("Você digitou um valor incorreto!\nDigite novamente!\n");
                         }
-                    } while(escolha < 1 || escolha > 3);
+                    } while (escolha < 1 || escolha > 3);
 
                     printf("Digite o tempo\n");
-                    
-                    if(escolha == 1){
-                        do{
+                    if (escolha == 1) {
+                        do {
                             printf("Formato (HH:MM:SS): ");
                             scanf("%d:%d:%f", &(*jogador)[*tamanho - 1].resultado.tempo.hora,
-                                            &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
-                                            &(*jogador)[*tamanho - 1].resultado.tempo.segundos);
+                                   &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
+                                   &(*jogador)[*tamanho - 1].resultado.tempo.segundos);
                             setbuf(stdin, NULL);
-                        } while(scanf("%d:%d:%f", &(*jogador)[*tamanho - 1].resultado.tempo.hora,
-                                            &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
-                                            &(*jogador)[*tamanho - 1].resultado.tempo.segundos) != 3);       
-                    }else if(escolha == 2){
-                        do{
+                        } while (scanf("%d:%d:%f", &(*jogador)[*tamanho - 1].resultado.tempo.hora,
+                                       &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
+                                       &(*jogador)[*tamanho - 1].resultado.tempo.segundos) != 3);
+                    } else if (escolha == 2) {
+                        do {
                             printf("Formato (MM:SS): ");
                             scanf("%d:%f", &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
-                                            &(*jogador)[*tamanho - 1].resultado.tempo.segundos);
+                                  &(*jogador)[*tamanho - 1].resultado.tempo.segundos);
                             setbuf(stdin, NULL);
-                        } while(scanf("%d:%f", &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
-                                            &(*jogador)[*tamanho - 1].resultado.tempo.segundos) != 2);
-                    }else if(escolha == 3){
-                        do{
+                        } while (scanf("%d:%f", &(*jogador)[*tamanho - 1].resultado.tempo.minutos,
+                                       &(*jogador)[*tamanho - 1].resultado.tempo.segundos) != 2);
+                    } else if (escolha == 3) {
+                        do {
                             printf("Formato (SS): ");
                             scanf("%f", &(*jogador)[*tamanho - 1].resultado.tempo.segundos);
                             setbuf(stdin, NULL);
-                        } while(scanf("%f", &(*jogador)[*tamanho - 1].resultado.tempo.segundos) != 1);
+                        } while (scanf("%f", &(*jogador)[*tamanho - 1].resultado.tempo.segundos) != 1);
                     }
                 }
             }
         }
-    
+
         printf("Jogador adicionado com sucesso!\n");
-    }else if(chooseoption == 2){
+    } else if (chooseoption == 2) {
         printf("Ok! retornando...\n");
         return;
     }
-
 }
