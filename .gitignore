@@ -124,7 +124,7 @@ void InserirJogador(Medalha** jogador, int* tamanho) {
                             printf("Opção inválida, escolha novamente!\n");
                         }
                     } while (chooseoption < 1 || chooseoption > 24);
-                    (*jogador)[*tamanho - 1].modalidade = ModalidadeMasculina(chooseoption);
+                    strcpy((*jogador)[*tamanho - 1].modalidade, ModalidadeMasculina(chooseoption));
                 } else if ((*jogador)[*tamanho - 1].genero == 'F') {
                     printf("1 - 10000M Women \n2 - 100M Women\n3 - 1500M Women\n4 - 200M Women\n5 - 20Km Race Walk Women\n6 - 3000M Steeplechase Women\n7 - 400M Hurdles Women\n8 - 400M Women\n9 - 4X100M Relay Women\n10 - 4X400 Relay Women\n11 - 5000M Women\n12 - 800M Women\n13 - Discus Throw Women\n14 - Hammer Throw Women\n15 - High Jump Women\n16 - Javelin Throw Women\n17 - Long Jump Women\n18 - Marathon Women\n19 - Pole Vault Women\n20 - Shot Put Women\n21 - Triple Jump Women\n22 - 100M Hurdles Women\n23 - Heptathlon Women\n");
                     do {
@@ -135,11 +135,10 @@ void InserirJogador(Medalha** jogador, int* tamanho) {
                             printf("Opção inválida, escolha novamente!\n");
                         }
                     } while (chooseoption < 1 || chooseoption > 23);
-                    (*jogador)[*tamanho - 1].modalidade = ModalidadeFeminina(chooseoption);
+                    strcpy((*jogador)[*tamanho - 1].modalidade, ModalidadeFeminina(chooseoption));
                 }
 
                 printf("Digite a cidade do atleta!\n");
-                fflush(stdin);
                 LeString((*jogador)[*tamanho - 1].cidade, 29);
 
                 do {
@@ -162,7 +161,6 @@ void InserirJogador(Medalha** jogador, int* tamanho) {
                 } while ((*jogador)[*tamanho - 1].tipo_medalha != 'G' && (*jogador)[*tamanho - 1].tipo_medalha != 'S' && (*jogador)[*tamanho - 1].tipo_medalha != 'B');
 
                 printf("Digite o pais do atleta!\n");
-                fflush(stdin);
                 LeString((*jogador)[*tamanho - 1].pais_origem, 4);
 
                 printf("Digite o resultado do atleta!\n");
@@ -177,7 +175,7 @@ void InserirJogador(Medalha** jogador, int* tamanho) {
                         printf("Qual foi o resultado em Pontos do jogador: ");
                         scanf("%f", &(*jogador)[*tamanho - 1].resultado.distancia);
                         setbuf(stdin, NULL);
-                        if ((*jogador)[*tamanho - 1].resultado.pontos < 0) {
+                        if ((*jogador)[*tamanho - 1].resultado.distancia < 0) {
                             printf("Digitou um valor incorreto!\nDigite novamente!\n");
                         }
                     } while ((*jogador)[*tamanho - 1].resultado.distancia < 0);
